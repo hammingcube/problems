@@ -1,4 +1,6 @@
 {
+  "unique-id": "abc12111",
+  "original-source": "EPI",
   "primary-solution": {
     "url": "github.com/maddyonline/epibook.github.io",
     "path": "solutions/annotated/prob-1/primary-solution",
