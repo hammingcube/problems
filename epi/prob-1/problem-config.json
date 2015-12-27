@@ -1,45 +1,27 @@
 {
-  "unique-id": "abc12111",
-  "original-source": "EPI",
-  "primary-solution": {
-    "url": "github.com/maddyonline/epibook.github.io",
-    "path": "solutions/annotated/prob-1/primary-solution",
-    "version": ""
-  },
-  "primary-generator": {
-    "url": "github.com/maddyonline/epibook.github.io",
-    "path": "solutions/annotated/prob-1/primary-generator",
-    "version": ""
-  },
-  "primary-runner": {
-    "url": "github.com/maddyonline/epibook.github.io",
-    "path": "solutions/annotated/primary-runner",
-    "version": ""
-  },
-  "solutions": [
-    {
-      "url": "github.com/maddyonline/epibook.github.io",
-      "path": "solutions/annotated/prob-1/primary-solution",
+  "abc12111": {
+    "id": "abc12111",
+    "original-source": "EPI",
+    "primary-solution": {
+      "url": "github.com/hammingcube/solutions",
+      "path": "epi/prob-1/solutions/primary-solution",
+      "src": "can_string_be_palindrome_soln2.cc",
+      "lang": "cpp",
       "version": ""
     },
-    {
-      "url": "github.com/maddyonline/epibook.github.io",
-      "path": "solutions/annotated/prob-1/solutions/soln-1",
+    "primary-generator": {
+      "url": "github.com/hammingcube/solutions",
+      "path": "epi/prob-1/generators/primary-generator",
+      "src": "Can_string_be_palindrome_gen.cc",
+      "lang": "cpp",
+      "version": ""
+    },
+    "primary-runner": {
+      "url": "github.com/hammingcube/solutions",
+      "path": "runners/primary-runner",
+      "src": "runtest.go",
+      "lang": "go",
       "version": ""
     }
-  ],
-  "generators": [
-    {
-      "url": "github.com/maddyonline/epibook.github.io",
-      "path": "solutions/annotated/prob-1/primary-generator",
-      "version": ""
-    }
-  ],
-  "runners": [
-    {
-      "url": "github.com/maddyonline/epibook.github.io",
-      "path": "solutions/annotated/primary-runner",
-      "version": ""
-    }
-  ]
+  }
 }
