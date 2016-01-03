@@ -7,7 +7,7 @@ services:
 
 before_install:
 - docker pull gcc:4.9
-- docker pull glot/golang
+- docker pull go
 
 install:
   - go get github.com/maddyonline/hey
