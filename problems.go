@@ -1,7 +1,7 @@
-package main
+package problems
 
 import (
-	"fmt"
+	"encoding/json"
 	"io/ioutil"
 	"log"
 	"os"
@@ -15,8 +15,7 @@ type Problem struct {
 	Desc      string `json:"long_desc"`
 }
 
-func main() {
-	dirname := os.Args[1]
+func GetList(dirname string) {
 	files, err := ioutil.ReadDir(dirname)
 	if err != nil {
 		log.Fatal(err)
@@ -47,5 +46,5 @@ func main() {
 			problems = append(problems, problem)
 		}
 	}
-	fmt.Printf("%#v\n", problems)
+	json.NewEncoder(os.Stdout).Encode(problems)
 }

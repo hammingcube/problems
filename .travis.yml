@@ -1,18 +1,4 @@
-sudo: required
-
 language: go
 
-services:
-  - docker
-
-before_install:
-- docker pull gcc:4.9
-- docker pull golang
-
-install:
-  - go get github.com/maddyonline/hey
-
-script:
-  - hey judge epi/prob-1/my-solutions/soln-1/can_string_be_palindrome_soln2.cc -l cpp
 
 
