@@ -10,9 +10,9 @@ import (
 )
 
 type Problem struct {
-	Name      string
-	ShortDesc string
-	Desc      string
+	Name      string `json:"name"`
+	ShortDesc string `json:"short_desc"`
+	Desc      string `json:"long_desc"`
 }
 
 func main() {
