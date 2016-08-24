@@ -2,9 +2,9 @@ package problems
 
 import (
 	"encoding/json"
+	"io"
 	"io/ioutil"
 	"log"
-	"os"
 	"path/filepath"
 	"strings"
 )
@@ -15,7 +15,7 @@ type Problem struct {
 	Desc      string `json:"long_desc"`
 }
 
-func GetList(dirname string) {
+func GetList(dirname string, w io.Writer) {
 	files, err := ioutil.ReadDir(dirname)
 	if err != nil {
 		log.Fatal(err)
@@ -46,5 +46,10 @@ func GetList(dirname string) {
 			problems = append(problems, problem)
 		}
 	}
-	json.NewEncoder(os.Stdout).Encode(problems)
+	b, err := json.MarshalIndent(map[string][]*Problem{"problems": problems}, "", "\t")
+	if err != nil {
+		log.Fatal(err)
+		return
+	}
+	w.Write(b)
 }

@@ -1,4 +1,8 @@
 language: go
 
+addons:
+  artifacts:
+    s3_region: "us-west-2" # defaults to "us-east-1"
+
 
 
