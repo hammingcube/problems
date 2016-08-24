@@ -15,11 +15,11 @@ type Problem struct {
 	Desc      string `json:"long_desc"`
 }
 
-func GetList(dirname string, w io.Writer) {
+func GetList(dirname string, w io.Writer) (map[string][]*Problem, error) {
 	files, err := ioutil.ReadDir(dirname)
 	if err != nil {
 		log.Fatal(err)
-		return
+		return nil, err
 	}
 	problems := []*Problem{}
 	for _, file := range files {
@@ -27,10 +27,10 @@ func GetList(dirname string, w io.Writer) {
 			problem := &Problem{
 				Name: file.Name(),
 			}
-			input, err := ioutil.ReadFile(filepath.Join(file.Name(), "README.md"))
+			input, err := ioutil.ReadFile(filepath.Join(dirname, file.Name(), "README.md"))
 			if err != nil {
 				log.Fatal(err)
-				return
+				return nil, err
 			}
 			lines := strings.Split(string(input), "\n")
 			var i, count int
@@ -49,7 +49,8 @@ func GetList(dirname string, w io.Writer) {
 	b, err := json.MarshalIndent(map[string][]*Problem{"problems": problems}, "", "\t")
 	if err != nil {
 		log.Fatal(err)
-		return
+		return nil, err
 	}
 	w.Write(b)
+	return map[string][]*Problem{"problems": problems}, nil
 }
