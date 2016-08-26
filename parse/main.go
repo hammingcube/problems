@@ -10,26 +10,24 @@ func main() {
 	md := markdown.New(markdown.XHTMLOutput(true), markdown.Nofollow(true))
 	data, _ := ioutil.ReadFile("../problem-1/README.md")
 
-	templates := map[string]string{}
+	//templates := map[string]string{}
 
 	parsed := md.Parse(data)
-	var startRecording bool
-	for _, tok := range parsed {
-		//fmt.Printf("%s: %#v\n", tok.Tag(), tok)
+	m := []struct {
+		Title string
+		Beg   int
+	}{}
+	var content string
+	for i, tok := range parsed {
 		if tok, ok := tok.(*markdown.Inline); ok {
-			if tok.Content == "Templates" {
-				startRecording = true
-			}
+			content = tok.Content
 		}
-		if startRecording {
-			if _, ok := tok.(*markdown.HeadingOpen); ok {
-				startRecording = false
-				continue
-			}
-			if tok, ok := tok.(*markdown.Fence); ok {
-				templates[tok.Params] = tok.Content
-			}
+		if _, ok := tok.(*markdown.HeadingClose); ok {
+			m = append(m, struct {
+				Title string
+				Beg   int
+			}{content, i})
 		}
 	}
-	fmt.Printf("%#v\n", templates)
+	fmt.Printf("%+v\n", m)
 }
