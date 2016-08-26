@@ -16,3 +16,14 @@ Hello
 2
 5
 ```
+
+### Templates
+
+code 1
+```python
+def func():
+	pass
+```
+
+
+### End
