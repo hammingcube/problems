@@ -10,9 +10,11 @@ import (
 )
 
 type Problem struct {
-	Name      string `json:"name"`
-	ShortDesc string `json:"short_desc"`
-	Desc      string `json:"long_desc"`
+	Name      string            `json:"name"`
+	Title     string            `json:"title"`
+	ShortDesc string            `json:"short_desc"`
+	FullDesc  string            `json:"full_desc"`
+	Templates map[string]string `json:"templates"`
 }
 
 func GetList(dirname string, w io.Writer) (map[string][]*Problem, error) {
@@ -32,17 +34,7 @@ func GetList(dirname string, w io.Writer) (map[string][]*Problem, error) {
 				log.Fatal(err)
 				return nil, err
 			}
-			lines := strings.Split(string(input), "\n")
-			var i, count int
-			for i, _ = range lines {
-				if strings.HasPrefix(lines[i], "#") {
-					count += 1
-				}
-				if count == 2 {
-					break
-				}
-			}
-			problem.ShortDesc = strings.Join(lines[:i], "\n")
+			Parse(input, problem)
 			problems = append(problems, problem)
 		}
 	}

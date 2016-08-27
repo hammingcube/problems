@@ -1,7 +1,11 @@
 ### Compute the length of an input string
 
+### Short Description
 Given a string (say hello), find the number of characters in the string. In this case, the answer is 5.
 
+
+### Full Description
+Given a string (say hello), find the number of characters in the string. In this case, the answer is 5.
 
 #### Test Cases
 
@@ -16,3 +20,14 @@ Hello
 2
 5
 ```
+
+### Templates
+
+code 1
+```python
+def func():
+	pass
+```
+
+
+### End
