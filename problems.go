@@ -17,13 +17,13 @@ type Problem struct {
 	Templates map[string]string `json:"templates"`
 }
 
-func GetList(dirname string, w io.Writer) (map[string][]*Problem, error) {
+func GetList(dirname string, w io.Writer) (map[string]*Problem, error) {
 	files, err := ioutil.ReadDir(dirname)
 	if err != nil {
 		log.Fatal(err)
 		return nil, err
 	}
-	problems := []*Problem{}
+	problems := map[string]*Problem{}
 	for _, file := range files {
 		if file.IsDir() && strings.HasPrefix(file.Name(), "problem") {
 			problem := &Problem{
@@ -35,14 +35,15 @@ func GetList(dirname string, w io.Writer) (map[string][]*Problem, error) {
 				return nil, err
 			}
 			Parse(input, problem)
-			problems = append(problems, problem)
+			problems[problem.Name] = problem
 		}
 	}
-	b, err := json.MarshalIndent(map[string][]*Problem{"problems": problems}, "", "\t")
+
+	b, err := json.MarshalIndent(problems, "", "\t")
 	if err != nil {
 		log.Fatal(err)
 		return nil, err
 	}
 	w.Write(b)
-	return map[string][]*Problem{"problems": problems}, nil
+	return problems, nil
 }

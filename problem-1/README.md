@@ -23,10 +23,20 @@ Hello
 
 ### Templates
 
-code 1
 ```python
 def func():
 	pass
+```
+
+```cpp
+# include <iostream>
+using namespace std;
+int main() {
+  string s;
+  while(cin >> s) {
+    cout << s.size() << endl;
+  }
+}
 ```
 
 
