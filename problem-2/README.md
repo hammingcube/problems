@@ -1,24 +1,24 @@
-### Compute the length of an input string
+### Check if an input string can be rearranged to form a palindrome
 
 ### Short Description
-Given a string (say hello), find the number of characters in the string. In this case, the answer is 5.
+Given a string (say ivcic), determine if we can rearrange it to form a palindrome. Example, ivcic can be rearranged to civic - a palindrome.
 
 
 ### Full Description
-Given a string (say hello), find the number of characters in the string. In this case, the answer is 5.
+Given a string (say ivcic), determine if we can rearrange it to form a palindrome. Example, ivcic can be rearranged to civic - a palindrome.
 
 #### Test Cases
 
 #### Input
 ```
 hi
-Hello
+civic
 ```
 
 #### Output
 ```
-2
-5
+0
+1
 ```
 
 ### Templates
